@@ -1,7 +1,16 @@
 from collections import defaultdict
 from datetime import datetime
 
-weekday_names = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+weekday_names = [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday",
+]
+
 
 def get_birthdays_per_week(users):
     birthday_dict = defaultdict(list)
@@ -18,8 +27,8 @@ def get_birthdays_per_week(users):
 
         delta_days = (birthday_this_year - today).days
         birthday_weekday = birthday_this_year.weekday()
-        if birthday_weekday in [5,6]:
-            delta_days += (7 - birthday_weekday)
+        if birthday_weekday in [5, 6]:
+            delta_days += 7 - birthday_weekday
 
         if delta_days < 7:
             greeting_weekday = (current_weekday + delta_days) % 7
@@ -27,6 +36,7 @@ def get_birthdays_per_week(users):
 
     for day, names in birthday_dict.items():
         print(f"{day}: {', '.join(names)}")
+
 
 users = [
     {"name": "Elon Musk", "birthday": datetime(1971, 10, 23)},
