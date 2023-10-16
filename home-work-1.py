@@ -18,7 +18,7 @@ def get_birthdays_per_week(users):
 
         delta_days = (birthday_this_year - today).days
         birthday_weekday = birthday_this_year.weekday()
-        if birthday_weekday == 5 or birthday_weekday == 6:
+        if birthday_weekday in [5,6]:
             delta_days += (7 - birthday_weekday)
 
         if delta_days < 7:
